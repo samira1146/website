@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>designer</title>
+</head>
+<body>
+Hi.this page is about desiners in iran
+<hr>
+designers:
+{% for designer in designer_list %}
+<br>
+name:
+{{designer.User}}
+age:
+{{designer.age}}
+Work_Experience:
+{{designer.Work_Experience}}
+{% endfor %}
+</body>
+</html>

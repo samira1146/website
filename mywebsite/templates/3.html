@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jornal</title>
+</head>
+<body>
+<hr>
+jornals:
+{% for jornal in jornal_list %}
+<br>
+name:
+{{jornal.name}}
+date:
+{{jornal.date}}
+
+{% endfor %}
+</body>
+</html>
