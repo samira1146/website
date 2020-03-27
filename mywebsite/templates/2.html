@@ -5,17 +5,20 @@
     <title>designer</title>
 </head>
 <body>
+<h1> Welcomeback: {{request.user.first_name}},{{request.user.last_name}}  </h1> | <a href="/logout/">Sign out</a> <br>
+
+
 Hi.this page is about desiners in iran
 <hr>
 designers:
 {% for designer in designer_list %}
 <br>
 name:
-{{designer.User}}
+{{designer.user.username}}
 age:
 {{designer.age}}
 Work_Experience:
-{{designer.Work_Experience}}
+{{designer.work_experience}}
 {% endfor %}
 </body>
 </html>
