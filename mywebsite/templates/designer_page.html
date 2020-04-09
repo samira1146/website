@@ -1,0 +1,8 @@
+<h1>number of article: {{articles.length}}</h1>
+
+<ul>
+{% for article in articles %}
+<li> <a href="/designer/{{article.designer.user.username}}/{{article.id}}/{{article.title|title}}/">{{article.title|title  }}</a> </li>
+{%endfor%}
+
+</ul>

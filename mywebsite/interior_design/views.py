@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import redirect
 from .forms import Information, SignUpForm
-from .models import Designer,Jornal
+from .models import Designer,Jornal,Article
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 
@@ -20,13 +20,13 @@ def user_login(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('/designer/')
+                return redirect('/designers/')
             else:
                 error="Please provide the correct password and username"
                 login_form = Information()
                 return render(request, '1.html', locals())     
     else:
-        login_form = Information()
+        login_form =        ()
     return render(request, '1.html', locals())
 
 def user_sign_up(request):
@@ -47,7 +47,7 @@ def user_sign_up(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('/designer/')
+                return redirect('/designers/')
             else:
                 error="Please provide the correct password and username"
                 sign_up_form = SignUpForm()
@@ -64,6 +64,15 @@ def user_logout(request):
     logout(request)
     return redirect("/login/")
 
+
+def designer_page(request,id):
+    articles= Article.objects.filter(designer__id=id)
+    return render(request,'designer_page.html',locals())
+
+def article(request,name,id,title):
+    article = Article.objects.get(id=id)
+    
+    return render(request,'article.html',locals())
 
 def designer_list(request):
     if request.user.is_authenticated:

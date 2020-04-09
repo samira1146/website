@@ -7,10 +7,21 @@ class Designer(models.Model):
     age = models.IntegerField()
     work_experience = models.IntegerField()
 
+    def __str__(self):
+    	return self.user.username
+
 class Jornal(models.Model):
     name = models.CharField(max_length=50)
     date = models.DateField()
 
+
+class Article(models.Model):
+	designer = models.ForeignKey(Designer,on_delete=models.CASCADE)
+	title = models.CharField(max_length=200)
+	content = models.TextField()
+
+	def __str__(self):
+		return self.title
 
 # class SignUp(models.Model):
 #     username = models.CharField(max_length=50)
